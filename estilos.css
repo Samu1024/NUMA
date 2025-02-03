@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #bf2f2f; /* Color de fondo negro */
+    color: white; /* Color de texto blanco */
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+h1, h2, h3 {
+    color: #d4af37; /* Color dorado para los encabezados */
+}
+
+a {
+    text-decoration: none;
+    color: #d4af37; /* Color dorado para los enlaces */
+}
+
+a:hover {
+    color: #b86b32; /* Un tono dorado más oscuro al pasar el mouse */
+}
+
+/* Header */
+header {
+    background-color: #682827; /* Fondo negro */
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+/* Sección "Nosotros" */
+#nosotros {
+    background-color: #682827; /* Fondo gris oscuro */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#nosotros p {
+    color: #ccc; /* Color gris claro para el texto */
+}
+
+/* Sección "Productos" */
+#productos {
+    background-color: #682827; /* Fondo negro */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#productos p, #productos h3 {
+    color: #ccc; /* Texto gris claro */
+}
+
+/* Sección "Contacto" */
+#contacto {
+    background-color: #682827; /* Fondo gris oscuro */
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#contacto p {
+    color: #ccc; /* Texto gris claro */
+}
+
+/* Footer */
+footer {
+    background-color: #682827; /* Fondo negro */
+    color: #ccc; /* Texto gris claro */
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Enlaces en el pie de página */
+footer a {
+    color: #d4af37; /* Color dorado para el enlace */
+}
+
+footer a:hover {
+    color: #b86b32; /* Un tono dorado más oscuro al pasar el mouse */
+}
