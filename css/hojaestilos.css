@@ -1,0 +1,393 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+header {
+    background-color: #ffffff; /* Rojo vino */
+    color: #b10f2e;
+    text-align: center;
+    padding: 20px 20px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header img.logo {
+    max-width: 180px;
+    margin-bottom: 20px;
+  }
+
+header h1 {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #67292a;
+    font-family: 'Playfair Display', serif; /* Tipografía elegante */
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra en el texto */
+}
+
+.quienes-somos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    
+}
+
+h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+}
+
+.quienes-somos-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.quienes-somos-text {
+    flex: 1;
+    max-width: 600px;
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+.quienes-somos-text p {
+    margin-bottom: 15px;
+}
+
+.quienes-somos-photo {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+}
+
+.photo {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .quienes-somos-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .quienes-somos-text {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .photo {
+        max-width: 80%;
+    }
+}
+
+
+/* ======= MENÚ DE NAVEGACIÓN ======= */
+nav {
+    background: #C0C0C0; /* Plateado */
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+nav .navegacion {
+    list-style: none;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    color:  #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease; 
+    font-family: 'Roboto', sans-serif;
+  }
+
+  nav a:hover {
+    background-color: #967872;
+    border-radius: 20px;
+  }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #b10f2e;
+}
+
+nav ul li {
+    margin: 0 15px;
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2em;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #333;
+}
+
+
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    background-color: rgba(255, 255, 255, 0.5); /* Fondo suave y limpio */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+section h2 {
+    font-size: 2em;
+    color: #7B002C; /* Rojo vino */
+    border-bottom: 2px solid #C0C0C0; /* Línea plateada */
+    display: inline-block;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.gallery-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.gallery-info {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 4px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-item:hover .gallery-info {
+    opacity: 1;
+}
+
+.gallery-info h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.gallery-info p {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+.form-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+h2 {
+    color: #7B002C;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.purchase-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-section {
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #5b5b5b;
+}
+
+.submit-btn {
+    padding: 15px;
+    font-size: 1.2rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #555;
+}
+
+@media (max-width: 768px) {
+    .form-container {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+footer {
+    background-color: #7B002C;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+#contacto {
+ background-color:#7B002C ;
+ color: #f9f9f9;
+}
+
+#contacto h2 {
+    color: #f9f9f9;
+}
+
+.parallax {
+    background-image: url('https://s1.1zoom.me/big0/289/Monaco_Monte_Carlo_Sunrises_and_sunsets_Coast_582640_1280x853.jpg');
+    min-height: 500px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.parallax1 {
+  background-image: url('https://media.istockphoto.com/id/155439315/es/foto/avi%C3%B3n-de-pasajeros-volando-sobre-nubes-durante-la-puesta-del-sol.jpg?s=612x612&w=0&k=20&c=E6zuCTGyaqlKa7_UDwg6vDVNFe5U53tUJZRhinQ02gg=');
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.parallax2 {
+background-image: url('https://s1.1zoom.me/big0/289/Monaco_Monte_Carlo_Sunrises_and_sunsets_Coast_582640_1280x853.jpg');
+min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.parallax3 {
+  background-image: url('https://media.istockphoto.com/id/155439315/es/foto/avi%C3%B3n-de-pasajeros-volando-sobre-nubes-durante-la-puesta-del-sol.jpg?s=612x612&w=0&k=20&c=E6zuCTGyaqlKa7_UDwg6vDVNFe5U53tUJZRhinQ02gg=');
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
