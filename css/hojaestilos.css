@@ -1,5 +1,5 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Playfair Display', serif;
     background-color: #f8f8f8;
     color: #333;
     margin: 0;
@@ -9,8 +9,8 @@ body {
 }
 
 header {
-    background-color: #ffffff; /* Rojo vino */
-    color: #b10f2e;
+    background-color: #000000; /* Rojo vino */
+    color: #ffffff;
     text-align: center;
     padding: 20px 20px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
@@ -18,8 +18,9 @@ header {
 }
 
 header img.logo {
-    max-width: 180px;
+    max-width: 250px;
     margin-bottom: 20px;
+    border-radius: 15px;
   }
 
 header h1 {
@@ -28,9 +29,13 @@ header h1 {
     letter-spacing: 2px;
     text-transform: uppercase;
     margin-bottom: 15px;
-    color: #67292a;
+    color: #ffffff;
     font-family: 'Playfair Display', serif; /* Tipografía elegante */
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra en el texto */
+}
+
+header h2 {
+font-size: 0.8em;
 }
 
 .quienes-somos-container {
@@ -45,6 +50,11 @@ header h1 {
     
 }
 
+h1 {
+text-align: center;
+color: #000000;
+
+}
 h2 {
     color: #333;
     font-size: 2.5rem;
@@ -103,7 +113,7 @@ h2 {
 
 /* ======= MENÚ DE NAVEGACIÓN ======= */
 nav {
-    background: #C0C0C0; /* Plateado */
+    background-color: #ffffff; 
     padding: 15px 0;
     text-align: center;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -123,7 +133,7 @@ nav .navegacion {
     text-transform: uppercase;
     padding: 10px 20px;
     transition: background-color 0.3s ease; 
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Playfair Display', serif;
   }
 
   nav a:hover {
@@ -136,7 +146,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #b10f2e;
+    background-color: #3b3839;
 }
 
 nav ul li {
@@ -164,15 +174,15 @@ section {
     padding: 60px 20px;
     text-align: center;
     margin-bottom: 40px;
-    background-color: rgba(255, 255, 255, 0.5); /* Fondo suave y limpio */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo suave y limpio */
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   }
 
 section h2 {
     font-size: 2em;
-    color: #7B002C; /* Rojo vino */
-    border-bottom: 2px solid #C0C0C0; /* Línea plateada */
+    color: #ffffff; /* Rojo vino */
+    border-bottom: 2px solid #ffffff; /* Línea plateada */
     display: inline-block;
     padding-bottom: 5px;
     margin-bottom: 20px;
@@ -251,22 +261,22 @@ h2 {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    background-color: #fff;
+    background-color: #000000;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-top: 40px;
 }
 
 h2 {
-    color: #7B002C;
-    font-size: 2.5rem;
+    color: #ffffff;
+    font-size: 1.5rem;
     text-align: center;
     margin-bottom: 30px;
 }
 
 h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
     font-weight: normal;
 }
@@ -282,12 +292,13 @@ h3 {
 
 .form-group {
     margin-bottom: 15px;
+    margin: 25px;
 }
 
 .form-group label {
     display: block;
     font-size: 1rem;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 8px;
 }
 
@@ -333,7 +344,7 @@ h3 {
 }
 
 footer {
-    background-color: #7B002C;
+    background-color: #000000;
     color: white;
     text-align: center;
     padding: 10px;
@@ -383,7 +394,7 @@ min-height: 500px;
 }
 
 .parallax3 {
-  background-image: url('https://media.istockphoto.com/id/155439315/es/foto/avi%C3%B3n-de-pasajeros-volando-sobre-nubes-durante-la-puesta-del-sol.jpg?s=612x612&w=0&k=20&c=E6zuCTGyaqlKa7_UDwg6vDVNFe5U53tUJZRhinQ02gg=');
+  background-image: url('https://s1.1zoom.me/big0/289/Monaco_Monte_Carlo_Sunrises_and_sunsets_Coast_582640_1280x853.jpg');
   min-height: 500px;
   background-attachment: fixed;
   background-position: center;
