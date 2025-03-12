@@ -34,7 +34,7 @@ header {
 .line {
     flex: 1;
     height: 2px;
-    background-color: #edeae6;
+    background-color: #000000;
 }
 
 .promo {
