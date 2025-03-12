@@ -34,7 +34,7 @@ header {
 .line {
     flex: 1;
     height: 2px;
-    background-color: #b5a07a;
+    background-color: #edeae6;
 }
 
 .promo {
@@ -461,7 +461,7 @@ min-height: 500px;
 
 .parallax6 {
 
-    background-image: url('https://imgur.com/zgfd49J.jpg');
+    background-image: url('https://imgur.com/4d3guyX.jpg');
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
