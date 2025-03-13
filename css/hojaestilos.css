@@ -12,6 +12,10 @@ body {
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    /*font-style: italic;*/
+}
+
+.indice {
     font-style: italic;
 }
 
@@ -37,11 +41,13 @@ header {
     gap: 20px;
     margin: 20px 0;
     font-size: 1.5rem;
+    
 }
 
 .promo .discount {
     font-size: 2.5rem;
     font-weight: bold;
+   
 }
 
 .discount span {
@@ -56,19 +62,23 @@ header {
     display: block;
     font-size: 1.3rem;
     font-style: italic;
+   
 }
+
 
 .subtitle {
     font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
-    font-style: italic;
+    /*font-style: italic;*/
     display: block;
     margin: 0;
     text-align: center;
+    padding-top: 100px;
 }
 
 .subtitle span {
     font-weight: bold;
+   
 }
 
 .cta {
@@ -82,10 +92,12 @@ header {
 
 h5 {
     font-family:  'Playfair Display', serif;
-    font-size: 4rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 250;
     margin: 0;
+    text-align: center;
 }
+
 
 
 header img.logo {
@@ -551,4 +563,8 @@ min-height: 500px;
     .discount span {
         font-size: 2rem;
     }
+}
+
+.certified {
+    padding-left: 235px;
 }
