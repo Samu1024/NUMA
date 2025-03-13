@@ -31,12 +31,6 @@ header {
 }
 
 
-.line {
-    flex: 1;
-    height: 2px;
-    background-color: #000000;
-}
-
 .promo {
     display: flex;
     align-items: center;
@@ -461,8 +455,8 @@ min-height: 500px;
 
 .parallax6 {
 
-    background-image: url('https://imgur.com/4d3guyX.jpg');
-    min-height: 500px;
+    background-image: url('https://imgur.com/Ninjsf8.jpg');
+    min-height: 450px;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
