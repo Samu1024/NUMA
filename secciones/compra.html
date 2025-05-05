@@ -22,7 +22,7 @@
             <li><a href="../secciones/nosotros.html">Nosotros</a></li>
             <li><a href="../secciones/productos.html">Productos</a></li>
             <li><a href="../secciones/modelos.html">Modelos</a></li>
-            <li><a href="../secciones/compra.html">Compra</a></li>
+            <li><a href="../secciones/compra.html">Carrito</a></li>
         </ul>
     </nav>
     <div class="parallax3">
@@ -32,45 +32,13 @@
     
                 <div class="checkout-section">
                     <h2>Productos Seleccionados</h2>
-    
-                    <div class="product-box">
-                        <img src="https://imgur.com/Y5PO6Yd.png" alt="Anillo de Oro" class="product-img">
-                        <div class="product-info">
-                            <h3>Anillo de Oro</h3>
-                            <label for="cantidad-oro">Cantidad:</label>
-                            <input type="number" id="cantidad-oro" name="cantidad-oro" min="1" value="1" class="quantity-input">
-                            <p>Precio: 1.200€</p>
-                            <button class="delete-button">Eliminar</button>
-                        </div>
-                    </div>
-    
-                    <div class="product-box">
-                        <img src="https://imgur.com/abcdefg.png" alt="Anillo de Diamantes" class="product-img">
-                        <div class="product-info">
-                            <h3>Anillo de Diamantes</h3>
-                            <label for="cantidad-diamantes">Cantidad:</label>
-                            <input type="number" id="cantidad-diamantes" name="cantidad-diamantes" min="1" value="2" class="quantity-input">
-                            <p>Precio: 2.500€ cada uno</p>
-                            <button class="delete-button">Eliminar</button>
-                        </div>
-                    </div>
-    
-                    <div class="product-box">
-                        <img src="https://imgur.com/hijklmn.png" alt="Anillo de Platino" class="product-img">
-                        <div class="product-info">
-                            <h3>Anillo de Platino</h3>
-                            <label for="cantidad-platino">Cantidad:</label>
-                            <input type="number" id="cantidad-platino" name="cantidad-platino" min="1" value="1" class="quantity-input">
-                            <p>Precio: 1.800€</p>
-                            <button class="delete-button">Eliminar</button>
-                        </div>
-                    </div>
-    
+                    <div id="carrito-contenido"></div>
                 </div>
+                
     
                 <div class="checkout-section total">
                     <span class="total-label">Total</span>
-                    <span class="total-amount">8.000€</span>
+                    <span class="total-amount"></span>
                 </div>
     
                 <button class="checkout-button">Proceder al Pago</button>
@@ -80,5 +48,102 @@
     <footer>
         <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const totalSpan = document.querySelector('.total-amount');
+        
+            function calcularTotal() {
+                let total = 0;
+                const inputs = document.querySelectorAll('.quantity-input');
+                inputs.forEach(input => {
+                    const cantidad = parseInt(input.value) || 0;
+                    const precioTexto = input.closest('.product-info').querySelector('p').textContent;
+                    const precioUnitario = parseFloat(precioTexto.replace(/[^\d,.-]/g, '').replace('.', '').replace(',', '.'));
+                    total += cantidad * precioUnitario;
+                });
+                totalSpan.textContent = total.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+            }
+        
+            function eliminarProducto(boton) {
+                const productBox = boton.closest('.product-box');
+                productBox.remove();
+                calcularTotal();
+            }
+        
+            // Escuchar cambios en las cantidades
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('input', calcularTotal);
+            });
+        
+            // Escuchar clics en los botones de eliminar
+            document.querySelectorAll('.delete-button').forEach(button => {
+                button.addEventListener('click', function () {
+                    eliminarProducto(this);
+                });
+            });
+        
+            // Calcular total al cargar la página
+            calcularTotal();
+        });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const contenedor = document.getElementById('carrito-contenido');
+    const totalSpan = document.querySelector('.total-amount');
+
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function renderCarrito() {
+        contenedor.innerHTML = '';
+        let total = 0;
+
+        carrito.forEach((producto, index) => {
+            const subtotal = producto.precio * producto.cantidad;
+            total += subtotal;
+
+            const div = document.createElement('div');
+            div.classList.add('product-box');
+            div.innerHTML = `
+                <img src="${producto.imagen}" alt="${producto.nombre}" class="product-img">
+                <div class="product-info">
+                    <h3>${producto.nombre}</h3>
+                    <label>Cantidad:</label>
+                    <input type="number" class="quantity-input" value="${producto.cantidad}" min="1" data-index="${index}">
+                    <p>Precio: ${producto.precio.toLocaleString('es-ES')} €</p>
+                    <button class="delete-button" data-index="${index}">Eliminar</button>
+                </div>
+            `;
+            contenedor.appendChild(div);
+        });
+
+        totalSpan.textContent = total.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+
+        // Eventos de cantidad
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('input', (e) => {
+                const i = e.target.dataset.index;
+                carrito[i].cantidad = parseInt(e.target.value);
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                renderCarrito();
+            });
+        });
+
+        // Eventos de eliminar
+        document.querySelectorAll('.delete-button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const i = e.target.dataset.index;
+                carrito.splice(i, 1);
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                renderCarrito();
+            });
+        });
+    }
+
+    renderCarrito();
+});
+
+    </script>
+        
+        
 </body>
 </html>

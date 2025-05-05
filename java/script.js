@@ -97,3 +97,38 @@ addToCartButtons.forEach(button => {
     button.addEventListener('click', showNotification);
 });
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    const buttons = document.querySelectorAll('.add-to-cart-btn');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const producto = button.closest('.producto-item');
+            const nombre = producto.querySelector('h3').textContent;
+            let precioTexto = producto.querySelector('.price').textContent.replace('€', '').trim();
+            precioTexto = precioTexto.replace(/\./g, '').replace(',', '.'); // Elimina puntos y cambia coma por punto
+            const precio = parseFloat(precioTexto);
+                        const imagen = producto.querySelector('img').src;
+
+            // Obtener productos actuales del carrito
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            // Verificar si ya está en el carrito
+            const existente = carrito.find(p => p.nombre === nombre);
+            if (existente) {
+                existente.cantidad += 1;
+            } else {
+                carrito.push({ nombre, precio: parseFloat(precio), imagen, cantidad: 1 });
+            }
+
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+
+            // Mostrar notificación
+            const notification = document.getElementById('notification');
+            notification.classList.add('visible');
+            setTimeout(() => notification.classList.remove('visible'), 2000);
+        });
+    });
+});
+
+

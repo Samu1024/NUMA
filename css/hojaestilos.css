@@ -411,8 +411,6 @@ h3 {
     background-color: #555;
 }
 
-
-
 footer {
     background-color: #000000;
     color: white;
@@ -421,6 +419,19 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+/* Estilo general del body para usar flexbox en toda la página */
+body.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Hace que el body ocupe el 100% de la altura de la ventana */
+    margin: 0;
+}
+
+/* El contenido se expande para llenar el espacio disponible */
+.contenido {
+    flex: 1;
 }
 
 #contacto {
@@ -491,8 +502,15 @@ min-height: 500px;
 }
 
 .logo {
-    max-width: 180px;
-    border-radius: 50%;
+    width: 100px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #000000;
+    padding: 10px 30px;
 }
 
 .tagline {
@@ -693,7 +711,7 @@ min-height: 500px;
     font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
-    background-color: #7B002C;
+    background: linear-gradient(90deg, #7B002C, #000);;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -956,7 +974,7 @@ min-height: 500px;
 /* Estilo general para los botones "Añadir al carrito" */
 .add-to-cart-btn {
     padding: 10px 20px;
-    background-color: #b12704; /* Color de fondo del botón */
+    background: linear-gradient(90deg, #7B002C, #000); /* Color de fondo del botón */
     color: #fff;
     font-size: 1.1em;
     font-weight: bold;
@@ -971,14 +989,9 @@ min-height: 500px;
 
 /* Efecto hover para el botón */
 .add-to-cart-btn:hover {
-    background-color: #f08804; /* Cambio de color al pasar el ratón */
     transform: scale(1.05); /* Aumenta el tamaño un poco al pasar el ratón */
 }
 
-/* Estilo de los botones cuando se hacen clic */
-.add-to-cart-btn:active {
-    background-color: #9f5c0f; /* Color más oscuro al hacer clic */
-}
 
 /* Estilo de la notificación */
 .notification {
