@@ -5,8 +5,15 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+ }
+
 body {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Comfortaa';
     background-color: #f8f8f8;
     color: #333;
     margin: 0;
@@ -19,7 +26,6 @@ body {
 }
 
 header {
-    background-color: #000000;
     color: #ffffff;
     text-align: center;
     padding: 20px 20px;
@@ -203,8 +209,10 @@ nav .navegacion {
   }
 
   nav a:hover {
-    background-color: #967872;
+    /*background-color: #967872;*/
     border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+
   }
 
 nav ul {
@@ -212,7 +220,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #3b3839;
+    background-color: #000000;
 }
 
 nav ul li {
@@ -255,10 +263,10 @@ section h2 {
 }
 
 .gallery-container {
-    max-width: 1200px;
+    max-width: 500px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #000000;
     border-radius: 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
@@ -266,7 +274,7 @@ section h2 {
 .gallery-container h2 {
     font-size: 2rem;
     font-weight: 600;
-    color: #333;
+    color: #fbfbfb;
     margin-bottom: 30px;
     text-align: center;
 }
@@ -502,14 +510,14 @@ min-height: 500px;
 }
 
 .logo {
-    width: 100px;
+    width: 500px;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #000000;
+    background-color: #00000000;
     padding: 10px 30px;
 }
 
@@ -711,7 +719,7 @@ min-height: 500px;
     font-size: 1.2rem;
     font-weight: 600;
     color: #fff;
-    background: linear-gradient(90deg, #7B002C, #000);;
+    background: linear-gradient(90deg, #ffffff, #000);;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -974,8 +982,8 @@ min-height: 500px;
 /* Estilo general para los botones "Añadir al carrito" */
 .add-to-cart-btn {
     padding: 10px 20px;
-    background: linear-gradient(90deg, #7B002C, #000); /* Color de fondo del botón */
-    color: #fff;
+    background: linear-gradient(90deg, #ffffff, #000); /* Color de fondo del botón */
+    color: #000000;
     font-size: 1.1em;
     font-weight: bold;
     border: none;
