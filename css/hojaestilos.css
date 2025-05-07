@@ -5,13 +5,6 @@
     box-sizing: border-box;
 }
 
-@font-face {
-    font-family: 'Comfortaa';
-    font-style: normal;
-    font-weight: 400 700;
-    font-display: swap;
- }
-
 body {
     font-family: 'Comfortaa';
     background-color: #f8f8f8;
@@ -72,7 +65,6 @@ header {
 
 
 .subtitle {
-    font-family: 'Playfair Display', serif;
     font-size: 1.5rem;
     /*font-style: italic;*/
     display: block;
@@ -96,7 +88,6 @@ header {
 }
 
 h5 {
-    font-family:  'Playfair Display', serif;
     font-size: 3rem;
     font-weight: 250;
     margin: 0;
@@ -118,7 +109,6 @@ header h1 {
     text-transform: uppercase;
     margin-bottom: 15px;
     color: #ffffff;
-    font-family: 'Playfair Display', serif; /* Tipografía elegante */
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3); /* Sombra en el texto */
 }
 
@@ -205,7 +195,6 @@ nav .navegacion {
     text-transform: uppercase;
     padding: 10px 20px;
     transition: background-color 0.3s ease; 
-    font-family: 'Playfair Display', serif;
   }
 
   nav a:hover {
@@ -898,7 +887,6 @@ min-height: 500px;
     font-weight: 600;
     color: #333;
     margin-bottom: 10px;
-    font-family: 'Arial', sans-serif; /* Elegante y fácil de leer */
 
 }
 
@@ -907,7 +895,6 @@ min-height: 500px;
     line-height: 1.6;
     color: #666;
     margin-bottom: 10px;
-    font-family: 'Georgia', serif; /* Serif para una sensación más elegante */
 }
 
 .producto-info .price {
@@ -915,7 +902,6 @@ min-height: 500px;
     font-weight: bold;
     color: #b12704; /* Color que resalta el precio */
     margin-top: 10px;
-    font-family: 'Arial', sans-serif;
 }
 
 .producto-item img {
@@ -1022,6 +1008,162 @@ min-height: 500px;
 .notification.show {
     opacity: 1;
     visibility: visible;
+}
+
+#intro-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: white;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: stayUp 3.5s ease forwards;
+    overflow: hidden;
+  }
+  
+  .intro-text {
+    font-size: 4rem;
+    color: black;
+    font-weight: bold;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards 0.3s;
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes stayUp {
+    0% {
+      transform: translateY(100%);
+    }
+    10% {
+      transform: translateY(0%);
+    }
+    85% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(100%);
+    }
+  }
+  
+  
+  #cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #f9f9f9;
+    color: #333;
+    border-top: 1px solid #ccc;
+    padding: 1.5rem 2rem;
+    font-size: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    z-index: 9999;
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+  }
+  
+  
+  #cookie-banner .cookie-text {
+    flex: 1 1 70%;
+    margin-bottom: 0.5rem;
+  }
+  
+  #cookie-banner .cookie-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  #cookie-banner button {
+    background: black;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: 'Comfortaa', sans-serif;
+  }
+  
+  #cookie-banner a {
+    color: black;
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  
+  
+  @keyframes fadeInBanner {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideDown {
+    to {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+  
+  #cookie-banner.slide-out {
+    animation: slideDown 0.6s ease forwards;
+  }
+  
+  /* ==== SECCIÓN POLÍTICA DE COOKIES ==== */
+.politica-cookies {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 60px 20px;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+}
+
+.politica-cookies h2 {
+    font-size: 2rem;
+    color: #7B002C;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #7B002C;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.politica-cookies h3 {
+    font-size: 1.4rem;
+    margin-top: 30px;
+    color: #000;
+}
+
+.politica-cookies p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.politica-cookies ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.politica-cookies ul li {
+    list-style: disc;
+    margin-bottom: 10px;
+    color: #555;
 }
 
 
