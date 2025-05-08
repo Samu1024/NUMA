@@ -125,7 +125,6 @@ font-size: 0.8em;
     background-color: #fff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    
 }
 
 h1 {
@@ -137,6 +136,7 @@ h2 {
     color: #333;
     font-size: 2.5rem;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 .quienes-somos-content {
@@ -153,6 +153,7 @@ h2 {
     font-size: 1.1rem;
     color: #666;
     line-height: 1.6;
+    padding: 20px;
 }
 
 .quienes-somos-text p {
@@ -163,6 +164,7 @@ h2 {
     flex: 1;
     max-width: 400px;
     text-align: center;
+    padding: 20px;
 }
 
 .photo {
@@ -178,7 +180,6 @@ nav {
     background-color: #000000; 
     padding: 15px 0;
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 nav .navegacion {
@@ -209,8 +210,7 @@ nav ul {
     padding: 0;
     display: flex;
     justify-content: center;
-    background-color: #000000;
-}
+    background-color: rgba(0, 0, 0, 0.2); /* Negro con 50% de opacidad */}
 
 nav ul li {
     margin: 0 15px;
@@ -1166,7 +1166,210 @@ min-height: 500px;
     color: #555;
 }
 
+#areaPago {
+    display: none; /* Mantenemos esto para ocultar inicialmente */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+    color: white;
+    z-index: 9999;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
+#areaPago.show {
+    display: flex; /* Cambiamos a flex cuando se muestra */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#areaPago h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+#areaPago form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#areaPago label {
+    font-size: 1.2em;
+}
+
+#areaPago input {
+    padding: 10px;
+    font-size: 1.1em;
+    width: 100%;
+    max-width: 300px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#areaPago button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #ff6f61;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+}
+
+#areaPago button:hover {
+    background-color: #e55b50;
+}
+
+#areaPago button#cancelarPagoBtn {
+    background-color: #ccc; /* Color de fondo gris */
+    color: black; /* Texto negro */
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px; /* Añadir margen superior para separarlo de otros botones */
+}
+
+#areaPago button#cancelarPagoBtn:hover {
+    background-color: #b3b3b3; /* Color más oscuro al pasar el ratón */
+}
+
+/* Estilo para los productos en el resumen del pedido */
+.producto-resumen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.producto-resumen img {
+    width: 80px; /* Aumentamos el tamaño de las imágenes */
+    height: auto;
+    margin-right: 15px;
+}
+
+.producto-resumen p {
+    margin: 0 10px;
+}
+
+.producto-resumen {
+    margin-bottom: 10px;
+}
+
+.destacados-premium {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5rem 2rem;
+    text-align: center;
+    font-family: 'Comfortaa', sans-serif;
+  }
+  
+  .destacados-premium h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  
+  .productos-premium {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+  }
+  
+  .producto-premium {
+    width: 320px;
+    background: #f6f6f6;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .producto-premium:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .producto-premium img {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .producto-premium .info {
+    padding: 1.5rem;
+  }
+  
+  .producto-premium h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color:#000
+  }
+  
+  .producto-premium .precio {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  .btn-ver {
+    display: inline-block;
+    background-color: #000;
+    color: #fff;
+    padding: 0.6rem 1.2rem;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-ver:hover {
+    background-color: #333;
+  }
+
+  .titulo-superior {
+    background: url('https://imgur.com/vVvn7eE.png') center/cover no-repeat;
+    padding: 6rem 2rem;
+    position: relative;
+    margin-bottom: 4rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    border-radius: 12px;
+  }
+  
+  .titulo-superior h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0;
+  }
+  
+  
+  
 /* Estilos Responsivos */
 @media (max-width: 1024px) {
     .gallery {
