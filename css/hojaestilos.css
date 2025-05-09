@@ -22,8 +22,38 @@
         color: #ffffff;
         text-align: center;
         padding: 20px 20px;
-    
         position: relative;
+    }
+
+    header a, nav a {
+        color: #333; /* Color del texto de los enlaces */
+        text-decoration: none; /* Eliminar subrayado predeterminado */
+        position: relative; /* Necesario para el subrayado personalizado */
+        padding-bottom: 2px; /* Espacio entre el texto y el subrayado */
+        font-size: 16px; /* Ajusta el tamaño de la fuente según sea necesario */
+    }
+
+    header a:hover, nav a:hover {
+        color: #f39c12; /* Color al pasar el ratón */
+        /* Asegúrate de que el texto se mantenga del color deseado */
+    }
+
+    header a::after, nav a::after {
+        content: ''; /* Crear un pseudo-elemento */
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #f39c12; /* El color del subrayado */
+        transform: scaleX(0); /* Inicialmente el subrayado está en 0 */
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out; /* Efecto de animación */
+    }
+
+    header a:hover::after, nav a:hover::after {
+        transform: scaleX(1); /* Expande el subrayado cuando se pasa el ratón */
+        transform-origin: bottom left;
     }
 
     .text-container1 {
@@ -31,7 +61,6 @@
         color: #010101;
         
     }
-
 
     .promo {
         display: flex;
@@ -226,13 +255,7 @@
         font-size: 1.2em;
         transition: color 0.3s;
     }
-
-    nav ul li a:hover {
-        color: #333;
-    }
-
-
-
+    
     section {
         padding: 60px 20px;
         text-align: center;
@@ -419,6 +442,47 @@
         position: relative;
         bottom: 0;
         width: 100%;
+    }
+
+    .footer-links {
+        margin-top: 10px;
+    }
+    
+    .footer-link {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 16px;
+        position: relative; /* Necesario para el subrayado personalizado */
+        padding-bottom: 2px; /* Espacio entre el texto y el subrayado */
+    }
+    
+    .footer-link:hover {
+        color: #f39c12; /* Puedes cambiar este color al que prefieras */
+    }
+
+    .footer-link::after {
+        content: ''; /* Necesario para crear un pseudo-elemento */
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #f39c12; /* El color del subrayado */
+        transform: scaleX(0); /* Comienza en 0 */
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out; /* Efecto suave */
+    }
+
+    
+    .footer-link:hover::after {
+    transform: scaleX(1); /* Expande el subrayado cuando el usuario pasa el ratón */
+    transform-origin: bottom left;
+    }
+    
+    
+    .footer-link i {
+        margin-right: 5px; /* Espacio entre el icono y el texto */
     }
 
     /* Estilo general del body para usar flexbox en toda la página */
