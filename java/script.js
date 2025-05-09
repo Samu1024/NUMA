@@ -129,7 +129,36 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(() => notification.classList.remove('visible'), 2000);
         });
     });
+    
 });
 
+// Función para mostrar recomendaciones basadas en el historial de compras
+function mostrarRecomendaciones() {
+    // Aquí podemos usar productos del historial de compras o los que más se han comprado
+    const productosRecomendados = [
+        { nombre: "Anillo de Topacio", imagen: "https://imgur.com/UQ8u8Rm.png", precio: "1.500 €" },
+        { nombre: "Anillo de Zafiro", imagen: "https://imgur.com/JiRrnyI.png", precio: "3.000 €" }
+    ];
+
+    const contenedorRecomendaciones = document.getElementById('productos-recomendados');
+    contenedorRecomendaciones.innerHTML = '';
+
+    productosRecomendados.forEach(producto => {
+        const div = document.createElement('div');
+        div.classList.add('producto-recomendado');
+        div.innerHTML = `
+            <img src="${producto.imagen}" alt="${producto.nombre}" class="producto-img">
+            <div class="producto-info">
+                <h4>${producto.nombre}</h4>
+                <p>Precio: ${producto.precio}</p>
+                <button class="add-to-cart-btn">Añadir al carrito</button>
+            </div>
+        `;
+        contenedorRecomendaciones.appendChild(div);
+    });
+
+    // Mostrar el área de recomendaciones
+    document.getElementById('recomendaciones-pago').style.display = 'block';
+}
 
 

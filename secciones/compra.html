@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <header>
@@ -23,9 +24,7 @@
     </header>
      <nav>
         <ul>
-            <li><a href="../secciones/nosotros.html">Nosotros</a></li>
             <li><a href="../secciones/productos.html">Productos</a></li>
-            <li><a href="../secciones/modelos.html">Modelos</a></li>
             <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
         </ul>
     </nav>
@@ -69,9 +68,15 @@
                     <button type="submit">Pagar</button>
                     <button type="button" id="cancelarPagoBtn">Cancelar</button>
                 </form>
+                    </div>
+                </div>
+                <div id="zonaRecomendaciones" style="display: none; margin-top: 2rem;">
+                    <h2 class="HRecom">Te Puede Interesar</h2>
+                    <div id="recomendacionesContenido" class="recomendaciones-grid">
+                        <!-- Aquí se insertarán las recomendaciones con JS -->
             </div>
         </main>
-    </div>
+    </div> 
     <footer>
         <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
         <p>Plaza Puerta del Sol, 12001.
@@ -124,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const areaPago = document.getElementById('areaPago');
     const resumenCarrito = document.getElementById('resumenCarrito');
 
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
     function renderCarrito() {
         contenedor.innerHTML = '';
@@ -212,21 +217,79 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault(); // Evita el envío real
 
     Swal.fire({
-        title: '¡Gracias por tu compra!',
-        html: `
+    title: '¡Gracias por tu compra!',
+    html: `
         <p>Has comprado <strong>${carrito.length}</strong> productos.</p>
         <p>Total: <strong>${totalSpan.textContent}</strong></p>
     `,
-        icon: 'success',
-        confirmButtonText: 'Aceptar',
-        backdrop: true
-    }).then(() => {
-        // Vaciar el carrito después de la confirmación
-        localStorage.removeItem('carrito');
-        carrito = [];
-        renderCarrito();
-        document.getElementById('areaPago').style.display = 'none';
+    icon: 'success',
+    confirmButtonText: 'Aceptar',
+    backdrop: true
+}).then(() => {
+    // Vaciar el carrito después de la confirmación
+    localStorage.removeItem('carrito');
+    carrito = [];
+    renderCarrito();
+    document.getElementById('areaPago').style.display = 'none';
+
+    // Mostrar zona de recomendaciones
+    const zona = document.getElementById('zonaRecomendaciones');
+    const contenedor = document.getElementById('recomendacionesContenido');
+    zona.style.display = 'block';
+
+    contenedor.innerHTML = `
+    <div class="producto-recomendado">
+        <img src="https://imgur.com/dSwTYvs.png" alt="Anillo Oro">
+        <p>Anillo de Oro - 1.200 €</p>
+        <button class="añadir-recomendado" data-nombre="Anillo de Oro" data-precio="1200" data-imagen="https://imgur.com/dSwTYvs.png">Añadir al carrito</button>
+    </div>
+    <div class="producto-recomendado">
+        <img src="https://imgur.com/vVvn7eE.png" alt="Esmeralda">
+        <p>Anillo de Esmeralda - 2.200 €</p>
+        <button class="añadir-recomendado" data-nombre="Anillo de Esmeralda" data-precio="2200" data-imagen="https://imgur.com/vVvn7eE.png">Añadir al carrito</button>
+    </div>
+`;
+document.querySelectorAll('.añadir-recomendado').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const producto = {
+            imagen: this.dataset.imagen,
+            nombre: this.dataset.nombre,
+            precio: parseFloat(this.dataset.precio),
+            cantidad: 1
+        };
+        
+        // Obtener el carrito actual
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+        // Comprobar si el producto ya está en el carrito
+        const index = carrito.findIndex(item => item.nombre === producto.nombre);
+
+        if (index !== -1) {
+            // Si ya está en el carrito, aumentar la cantidad
+            carrito[index].cantidad++;
+        } else {
+            // Si no está, añadirlo
+            carrito.push(producto);
+        }
+
+        // Guardar el carrito actualizado en localStorage
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+
+        // Mostrar un mensaje de confirmación
+        Swal.fire({
+            title: 'Producto añadido',
+            text: `${producto.nombre} se ha añadido al carrito.`,
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        }).then(() => {
+            // Recargar la página para actualizar el carrito
+            location.reload();
+        });
     });
+});
+
+});
 
     confetti({
     particleCount: 100,
@@ -234,8 +297,6 @@ document.addEventListener('DOMContentLoaded', function () {
     origin: { y: 0.6 }
 });
 });
-
-
 });
 
     </script>
