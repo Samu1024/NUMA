@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numa - Joyería de Alta Gama</title>
+  <link rel="stylesheet" href="../css/hojaestilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <a href="../index.html">
+      <img class="logo" src="https://imgur.com/XOfzZEv.png" alt="Logo de la marca">
+    </a>
+    <p>Elegancia y exclusividad en cada anillo</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../secciones/productos.html">Productos</a></li>
+      <li><a href="../secciones/fidelidad.html">Fidelidad</a></li>
+      <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+      <li><a href="../secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
+    </ul>
+  </nav>
+
+  <section class="fidelidad-container">
+    <h2 class="fidelidad-title">Programa de Fidelidad</h2>
+    <p class="fidelidad-descripcion">
+      Conviértete en cliente VIP y gana créditos por cada compra y cada referido.
+    </p>
+
+    <div class="fidelidad-beneficios">
+      <div class="fidelidad-card">
+        <h3>💎 Compra y acumula</h3>
+        <p>Por cada <strong>1 €</strong> que gastes, obtienes <strong>1 crédito</strong>. Cada 100 créditos = <strong>10 € de descuento</strong>.</p>
+      </div>
+
+      <div class="fidelidad-card">
+        <h3>📢 Comparte y gana</h3>
+        <p>Comparte tu enlace personal y gana <strong>100 créditos</strong> por cada nuevo cliente que compre con tu recomendación.</p>
+        <div class="referido">
+          <label for="enlaceReferido">Tu enlace:</label>
+          <input type="text" id="enlaceReferido" readonly value="https://tusitio.com/?ref=usuario123">
+          <button onclick="copiarEnlace()">Copiar</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mis-creditos">
+      <h3>🎉 Tus Créditos Actuales: <span id="creditos-usuario"></span></h3>
+      <p>¡Sigue acumulando y canjéalos al pagar!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+  function copiarEnlace() {
+    const enlace = document.getElementById('enlaceReferido');
+    enlace.select();
+    enlace.setSelectionRange(0, 99999); // móvil
+    document.execCommand("copy");
+    alert("¡Enlace copiado!");
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Mostrar créditos de fidelidad almacenados
+    const creditos = localStorage.getItem('creditosFidelidad') || 0;
+    const contenedor = document.getElementById('creditos-usuario');
+    if (contenedor) {
+      contenedor.textContent = `${creditos}`;
+    }
+  });
+</script>
+
+</body>
+</html>

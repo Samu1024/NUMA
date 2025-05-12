@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Deseos - Numa</title>
+  <link rel="stylesheet" href="../css/hojaestilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="layout">
+  <header>
+    <a href="../index.html">
+      <img class="logo" src="../Logo_Numa-removebg-preview.png" alt="Logo Numa">
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../secciones/productos.html">Productos</a></li>
+      <li><a href="../secciones/fidelidad.html">Fidelidad</a></li>
+      <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+      <li><a href="../secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
+    </ul>
+  </nav>
+
+  <main class="wishlist-page">
+  <section class="wishlist-container">
+    <h2 class="wishlist-title">Tu Lista de Deseos</h2>
+    <div id="lista-deseos" class="wishlist-list">
+      <!-- Aquí se insertan los productos dinámicamente -->
+    </div>
+  </section>
+</main>
+
+
+  <footer>
+    <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const contenedor = document.getElementById("lista-deseos");
+      const deseos = JSON.parse(localStorage.getItem("deseos")) || [];
+
+      if (deseos.length === 0) {
+        contenedor.innerHTML = "<p>No hay productos en tu lista de deseos.</p>";
+        return;
+      }
+
+      deseos.forEach((producto, index) => {
+        const item = document.createElement("div");
+        item.classList.add("product-box");
+        item.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.nombre}" class="product-img" />
+          <div class="product-info">
+            <h3>${producto.nombre}</h3>
+            <p>${producto.descripcion || "Sin descripción."}</p>
+            <p class="price">${producto.precio.toLocaleString("es-ES")} €</p>
+            <button class="delete-button" data-index="${index}">Eliminar</button>
+          </div>
+        `;
+        contenedor.appendChild(item);
+      });
+
+      contenedor.addEventListener("click", function (e) {
+        if (e.target.classList.contains("delete-button")) {
+          const i = e.target.dataset.index;
+          deseos.splice(i, 1);
+          localStorage.setItem("deseos", JSON.stringify(deseos));
+          location.reload();
+        }
+      });
+    });
+  </script>
+</body>
+</html>

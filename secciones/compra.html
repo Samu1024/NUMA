@@ -25,7 +25,9 @@
      <nav>
         <ul>
             <li><a href="../secciones/productos.html">Productos</a></li>
+            <li><a href="../secciones/fidelidad.html">Fidelidad</a></li>
             <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a href="../secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
         </ul>
     </nav>
     <div class="parallax3">
@@ -43,7 +45,18 @@
                     <span class="total-label">Total</span>
                     <span class="total-amount"></span>
                 </div>
-    
+
+                <div class="contenedor-creditos">
+                <div class="zona-creditos">
+                    <label for="creditosUsuario">Usar créditos de fidelidad:</label>
+                    <input type="number" id="creditosUsuario" placeholder="0" min="0" max="5000">
+                    <span id="creditosDisponibles" class="creditos-disponibles"></span>
+                    <p>Máximo 5000 créditos (500€)</p>
+                    <p id="mensajeDescuento" class="mensaje-descuento"></p>
+                </div>
+                </div>
+
+                
                 <button class="checkout-button" id="procederPagoBtn">Proceder al Pago</button>
             </section>
 
@@ -86,65 +99,57 @@
         <div class="footer-links">
             <a href="privacy.html" class="footer-link">Política de Privacidad</a>
             <a href="./secciones/politica-cookies.html" class="footer-link">Política de Cookies</a>
-            <a href="https://www.instagram.com/tuCuentaInstagram" target="_blank" class="footer-link">
+            <a href="https://www.instagram.com/kenyatena_" target="_blank" class="footer-link">
                 <i class="fa-brands fa-instagram"></i> Instagram</a>
         </div>
     </footer>
     <script>
 document.addEventListener('DOMContentLoaded', function () {
     const totalSpan = document.querySelector('.total-amount');
-    
-    function calcularTotal() {
-        let total = 0;
-        const inputs = document.querySelectorAll('.quantity-input');
-        inputs.forEach(input => {
-            const cantidad = parseInt(input.value) || 0;
-            const precioTexto = input.closest('.product-info').querySelector('p').textContent;
-            const precioUnitario = parseFloat(precioTexto.replace(/[^\d,.-]/g, '').replace('.', '').replace(',', '.'));
-            total += cantidad * precioUnitario;
-        });
-        totalSpan.textContent = total.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
-    }
-    
-    function eliminarProducto(boton) {
-        const productBox = boton.closest('.product-box');
-        productBox.remove();
-        calcularTotal();
-    }
-    
-    // Escuchar cambios en las cantidades
-    document.querySelectorAll('.quantity-input').forEach(input => {
-        input.addEventListener('input', calcularTotal);
-    });
-    
-    // Escuchar clics en los botones de eliminar
-    document.querySelectorAll('.delete-button').forEach(button => {
-        button.addEventListener('click', function () {
-            eliminarProducto(this);
-        });
-    });
-    
-    // Calcular total al cargar la página
-    calcularTotal();
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-    const contenedor = document.getElementById('carrito-contenido');
-    const totalSpan = document.querySelector('.total-amount');
-    const btn = document.getElementById('procederPagoBtn');
+    const creditosDisponiblesSpan = document.getElementById('creditosDisponibles');
+    const creditosInput = document.getElementById('creditosUsuario');
+    const mensajeDescuento = document.getElementById('mensajeDescuento');
+    const btnPago = document.getElementById('procederPagoBtn');
     const areaPago = document.getElementById('areaPago');
     const resumenCarrito = document.getElementById('resumenCarrito');
 
-    carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+    let creditosDisponibles = parseInt(localStorage.getItem('creditosFidelidad')) || 0;
+    creditosDisponiblesSpan.textContent = `${creditosDisponibles} créditos`;
 
-    function renderCarrito() {
-        contenedor.innerHTML = '';
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function calcularTotal() {
         let total = 0;
 
-        carrito.forEach((producto, index) => {
-            const subtotal = producto.precio * producto.cantidad;
-            total += subtotal;
+        carrito.forEach(producto => {
+            total += producto.precio * producto.cantidad;
+        });
 
+        let creditosAUsar = parseInt(creditosInput.value) || 0;
+
+        if (creditosAUsar > creditosDisponibles) {
+            creditosAUsar = creditosDisponibles;
+        }
+
+        if (creditosAUsar > 5000) {
+            creditosAUsar = 5000;
+        }
+
+        creditosInput.value = creditosAUsar;
+
+        let descuento = Math.floor(creditosAUsar / 100) * 10;
+        total -= descuento;
+
+        totalSpan.textContent = total.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
+
+        mensajeDescuento.textContent = `Descuento aplicado: -${descuento.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' })}`;
+    }
+
+    function renderCarrito() {
+        const contenedor = document.getElementById('carrito-contenido');
+        contenedor.innerHTML = '';
+
+        carrito.forEach((producto, index) => {
             const div = document.createElement('div');
             div.classList.add('product-box');
             div.innerHTML = `
@@ -160,21 +165,17 @@ document.addEventListener('DOMContentLoaded', function () {
             contenedor.appendChild(div);
         });
 
-        totalSpan.textContent = total.toLocaleString('es-ES', { style: 'currency', currency: 'EUR' });
-
-        // Eventos de cantidad
         document.querySelectorAll('.quantity-input').forEach(input => {
-            input.addEventListener('input', (e) => {
+            input.addEventListener('input', e => {
                 const i = e.target.dataset.index;
-                carrito[i].cantidad = parseInt(e.target.value);
+                carrito[i].cantidad = parseInt(e.target.value) || 1;
                 localStorage.setItem('carrito', JSON.stringify(carrito));
-                renderCarrito();
+                calcularTotal();
             });
         });
 
-        // Eventos de eliminar
-        document.querySelectorAll('.delete-button').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.delete-button').forEach(button => {
+            button.addEventListener('click', e => {
                 const i = e.target.dataset.index;
                 carrito.splice(i, 1);
                 localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -182,25 +183,26 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Lógica de cancelar pago
-        document.getElementById('cancelarPagoBtn').addEventListener('click', function () {
-            areaPago.classList.remove('show'); // Ocultar el área de pago con transición
-        });
+        calcularTotal();
     }
 
-    // Mostrar el área de pago cuando se haga clic en "Proceder al pago"
-    btn.addEventListener('click', function () {
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    resumenCarrito.innerHTML = '';
+    creditosInput.addEventListener('input', calcularTotal);
 
+    btnPago.addEventListener('click', function () {
+    resumenCarrito.innerHTML = '';
     if (carrito.length === 0) {
-        resumenCarrito.innerHTML = '<p>El carrito está vacío.</p>';
-    } else {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Carrito vacío',
+            text: 'No puedes proceder al pago sin productos en el carrito.',
+            confirmButtonText: 'Entendido'
+        });
+        return;
+    }
+
         carrito.forEach(producto => {
             const item = document.createElement('div');
-            item.className = 'producto-resumen';
             item.innerHTML = `
-                <img src="${producto.imagen}" alt="${producto.nombre}" style="width: 50px;">
                 <p><strong>${producto.nombre}</strong></p>
                 <p>${producto.precio.toFixed(2)} € x ${producto.cantidad}</p>
                 <p>Total: ${(producto.precio * producto.cantidad).toFixed(2)} €</p>
@@ -208,103 +210,58 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             resumenCarrito.appendChild(item);
         });
-    }
 
-    // Mostrar el área de pago
-    areaPago.style.display = 'flex'; // Asegurar que el display es flex
-    setTimeout(() => {
-        areaPago.classList.add('show');
-    }, 10);
-});
+        areaPago.style.display = 'flex';
+        setTimeout(() => {
+            areaPago.classList.add('show');
+        }, 10);
+    });
 
-    renderCarrito();
+   document.getElementById('formPago').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-    document.getElementById('formPago').addEventListener('submit', function (e) {
-    e.preventDefault(); // Evita el envío real
+    const usados = Math.floor(parseInt(creditosInput.value) || 0);
+    const totalOriginal = carrito.reduce((acc, producto) => acc + producto.precio * producto.cantidad, 0);
+    const descuento = Math.floor(usados / 100) * 10;
+    const totalConDescuento = totalOriginal - descuento;
+    const creditosGanados = Math.floor(totalConDescuento);
+    const nuevos = Math.max(0, creditosDisponibles - usados + creditosGanados);
 
     Swal.fire({
-    title: '¡Gracias por tu compra!',
-    html: `
-        <p>Has comprado <strong>${carrito.length}</strong> productos.</p>
-        <p>Total: <strong>${totalSpan.textContent}</strong></p>
-    `,
-    icon: 'success',
-    confirmButtonText: 'Aceptar',
-    backdrop: true
-}).then(() => {
-    // Vaciar el carrito después de la confirmación
-    localStorage.removeItem('carrito');
-    carrito = [];
-    renderCarrito();
-    document.getElementById('areaPago').style.display = 'none';
+        title: '¡Gracias por tu compra!',
+        html: `
+            <p>Has comprado <strong>${carrito.length}</strong> productos.</p>
+            <p>Total pagado: <strong>${totalConDescuento.toFixed(2)} €</strong></p>
+            <p>Créditos usados: <strong>${usados}</strong></p>
+            <p>Nuevos créditos acumulados: <strong>${creditosGanados}</strong></p>
+        `,
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        backdrop: true
+    }).then(() => {
+        localStorage.setItem('creditosFidelidad', nuevos);
+        localStorage.removeItem('carrito');
+        carrito = [];
+        renderCarrito();
+        areaPago.style.display = 'none';
+        creditosDisponiblesSpan.textContent = `${nuevos} €`;
+        creditosInput.value = '';
+    });
 
-    // Mostrar zona de recomendaciones
-    const zona = document.getElementById('zonaRecomendaciones');
-    const contenedor = document.getElementById('recomendacionesContenido');
-    zona.style.display = 'block';
-
-    contenedor.innerHTML = `
-    <div class="producto-recomendado">
-        <img src="https://imgur.com/dSwTYvs.png" alt="Anillo Oro">
-        <p>Anillo de Oro - 1.200 €</p>
-        <button class="añadir-recomendado" data-nombre="Anillo de Oro" data-precio="1200" data-imagen="https://imgur.com/dSwTYvs.png">Añadir al carrito</button>
-    </div>
-    <div class="producto-recomendado">
-        <img src="https://imgur.com/vVvn7eE.png" alt="Esmeralda">
-        <p>Anillo de Esmeralda - 2.200 €</p>
-        <button class="añadir-recomendado" data-nombre="Anillo de Esmeralda" data-precio="2200" data-imagen="https://imgur.com/vVvn7eE.png">Añadir al carrito</button>
-    </div>
-`;
-document.querySelectorAll('.añadir-recomendado').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const producto = {
-            imagen: this.dataset.imagen,
-            nombre: this.dataset.nombre,
-            precio: parseFloat(this.dataset.precio),
-            cantidad: 1
-        };
-        
-        // Obtener el carrito actual
-        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-        // Comprobar si el producto ya está en el carrito
-        const index = carrito.findIndex(item => item.nombre === producto.nombre);
-
-        if (index !== -1) {
-            // Si ya está en el carrito, aumentar la cantidad
-            carrito[index].cantidad++;
-        } else {
-            // Si no está, añadirlo
-            carrito.push(producto);
-        }
-
-        // Guardar el carrito actualizado en localStorage
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-
-        // Mostrar un mensaje de confirmación
-        Swal.fire({
-            title: 'Producto añadido',
-            text: `${producto.nombre} se ha añadido al carrito.`,
-            icon: 'success',
-            timer: 1500,
-            showConfirmButton: false
-        }).then(() => {
-            // Recargar la página para actualizar el carrito
-            location.reload();
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
         });
     });
-});
 
-});
+    document.getElementById('cancelarPagoBtn').addEventListener('click', () => {
+        areaPago.classList.remove('show');
+    });
 
-    confetti({
-    particleCount: 100,
-    spread: 70,
-    origin: { y: 0.6 }
+    renderCarrito();
 });
-});
-});
+</script>
 
-    </script>
 </body>
 </html>

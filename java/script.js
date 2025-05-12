@@ -161,4 +161,32 @@ function mostrarRecomendaciones() {
     document.getElementById('recomendaciones-pago').style.display = 'block';
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  const wishlistButtons = document.querySelectorAll('.wishlist-btn');
+
+ wishlistButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const producto = button.closest('.producto-item');
+    const nombre = producto.querySelector('h3').textContent;
+    const precioTexto = producto.querySelector('.price').textContent.replace('€', '').trim();
+    const precio = parseFloat(precioTexto.replace(/\./g, '').replace(',', '.'));
+    const imagen = producto.querySelector('img').src;
+    const descripcion = producto.querySelector('p').textContent;
+
+    let deseos = JSON.parse(localStorage.getItem('deseos')) || [];
+
+    if (!deseos.some(p => p.nombre === nombre)) {
+      deseos.push({ nombre, precio, imagen, descripcion });
+      localStorage.setItem('deseos', JSON.stringify(deseos));
+
+      // ✅ Notificación visual
+      const wishlistNotification = document.getElementById('wishlist-notification');
+      wishlistNotification.classList.add('show');
+      setTimeout(() => wishlistNotification.classList.remove('show'), 3000);
+    }
+  });
+});
+});
+
+
 
