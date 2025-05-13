@@ -188,5 +188,30 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 });
 
+  window.addEventListener('DOMContentLoaded', function () {
+    const hash = window.location.hash;
+
+    if (hash) {
+      // Si existe un ancla en la URL
+      const objetivo = document.querySelector(hash);
+      
+      if (objetivo) {
+        // Si la sección está dentro de un desplegable, abrimos ese desplegable
+        const desplegable = objetivo.closest('.contenido-desplegable');
+        if (desplegable && desplegable.classList.contains('cerrado')) {
+          desplegable.classList.remove('cerrado');
+          desplegable.classList.add('abierto');
+        }
+
+        // Luego hacemos scroll a la sección (después de abrir)
+        setTimeout(() => {
+          objetivo.scrollIntoView({ behavior: 'smooth' });
+        }, 300); // Espera un poco para asegurarse de que esté visible
+      }
+    }
+  });
+
+
+
 
 

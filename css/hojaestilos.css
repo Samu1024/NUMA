@@ -5,6 +5,10 @@
         box-sizing: border-box;
     }
 
+    html {
+  scroll-behavior: smooth;
+}
+
     body {
         font-family: 'Comfortaa';
         background-color: #ffffff;
@@ -287,7 +291,7 @@
     .gallery-container-modelos {
         max-width: 1700px;
         margin: 0 auto;
-        padding: 20px;
+        padding: 10px;
         background-color: #000000;
         border-radius: 10px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -541,7 +545,7 @@
     }
 
     .parallax3 {
-    background-image: url('https://s1.1zoom.me/big0/289/Monaco_Monte_Carlo_Sunrises_and_sunsets_Coast_582640_1280x853.jpg');
+    background-image: url('../Fondo.jpeg');
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -1087,6 +1091,7 @@
     /* Estilo general para los botones "Añadir al carrito" */
     .add-to-cart-btn {
         padding: 10px 20px;
+        margin-left: 75px;
         background: linear-gradient(90deg, #ffffff, #000); /* Color de fondo del botón */
         color: #000000;
         font-size: 1.1em;
@@ -1097,6 +1102,7 @@
         transition: background-color 0.3s ease, transform 0.3s ease; /* Efecto suave de color y tamaño */
         display: inline-block;
         margin-top: 15px;
+        margin-bottom: 15px;
     }
 
 
@@ -1107,6 +1113,7 @@
 
     .wishlist-btn {
   padding: 10px 20px;
+  margin-left: 75px;
   background: linear-gradient(90deg, #fff, #7B002C);
   color: #000;
   font-size: 1.1em;
@@ -1599,9 +1606,9 @@
         background-color: #333;
     }
 
-    .titulo-superior {
-        background: url('https://imgur.com/vVvn7eE.png') center/cover no-repeat;
-        padding: 6rem 2rem;
+    .titulo-superior1 {
+        background: url('../ParteAnillos2.webp') center/cover no-repeat;
+        padding: 9rem 2rem;
         position: relative;
         margin-bottom: 4rem;
         color: white;
@@ -1609,7 +1616,41 @@
         border-radius: 12px;
     }
     
-    .titulo-superior h1 {
+    .titulo-superior1 h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
+    }
+
+    .titulo-superior2 {
+        background: url('../ParteNostros.jpeg') center/cover no-repeat;
+        padding: 9rem 2rem;
+        position: relative;
+        margin-bottom: 4rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        border-radius: 12px;
+    }
+
+    .titulo-superior2 h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        text-align: center;
+        margin: 0;
+    }
+
+    .titulo-superior3 {
+        background: url('../ParteModelos.jpeg') center/cover no-repeat;
+        padding: 9rem 2rem;
+        position: relative;
+        margin-bottom: 2rem;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        border-radius: 12px;
+    }
+
+    .titulo-superior3 h1 {
         font-size: 3rem;
         font-weight: 700;
         text-align: center;
