@@ -11,22 +11,28 @@
 <body class="layout">
     <div class="parallax6">
       <video autoplay muted loop playsinline class="video-fondo">
-        <source src="./Aurela.mp4" type="video/mp4">
+        <source src="./media/Aurela.mp4" type="video/mp4">
         Tu navegador no soporta el video.
     </video>
     <main class="contenido">
         <header class="header">
             <nav class="navbar">
-                <a href="./index.html" class="logo-link">
-                    <img class="logo" src="./Logo_Numa-removebg-preview.png" alt="Logo">
-                </a>
-                <ul class="menu">
-                    <li><a href="./secciones/productos.html">Productos</a></li>
-                    <li><a href="./secciones/fidelidad.html">Fidelidad</a></li>
-                    <li><a href="./secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                    <li><a href="./secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
-                </ul>
-            </nav>
+            <a href="./index.html" class="logo-link">
+              <img class="logo" src="./media/Logo_Numa-removebg-preview.png" alt="Logo">
+            </a>
+
+            <button class="hamburger" id="hamburger">
+              <i class="fa fa-bars"></i>
+            </button>
+
+            <ul class="menu" id="menu">
+              <li><a href="./secciones/productos.html">Productos</a></li>
+              <li><a href="./secciones/fidelidad.html">Fidelidad</a></li>
+              <li><a href="./secciones/contacto.html"><i class="fa-solid fa-phone"></i></a></li>
+              <li><a href="./secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+              <li><a href="./secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
+            </ul>
+          </nav>
         </header>
         
      
@@ -138,9 +144,9 @@
             </div>
             <!-- Blanca Suarez -->
             <div class="gallery-item">
-                <img src="./Blanca Suárez.jpeg" alt="Manu Ríos" class="gallery-image">
+                <img src="./media/Blanca Suárez.jpeg" alt="Manu Ríos" class="gallery-image">
                 <div class="gallery-info">
-                    <h3>Blanca</h3>
+                    <h3>Blanca Suárez</h3>
                     <p>Actor y modelo, famoso por su participación en diversas producciones.</p>
                 </div>
             </div>
@@ -154,7 +160,7 @@
             </div>
             <!-- Ursula Corberó -->
             <div class="gallery-item">
-                <img src="./Ursula Corberó.jpeg" alt="Miguel Ángel Silvestre" class="gallery-image">
+                <img src="./media/Ursula Corberó.jpeg" alt="Miguel Ángel Silvestre" class="gallery-image">
                 <div class="gallery-info">
                     <h3>Ursula Corberó</h3>
                     <p>Actor y modelo, reconocido por sus papeles en cine y televisión.</p>
@@ -165,7 +171,14 @@
   </div>
 </section>
 </div>
-    <footer>
+
+<div id="newsletterBubble" class="newsletter-bubble">
+  <span class="close-bubble" id="closeBubble">&times;</span>
+  <p>¿Quieres estar al día? Suscríbete a nuestro Newsletter.</p>
+  <button id="subscribeBtn">Suscríbete</button>
+</div>
+
+    <footer id="footer">
         <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
         <p>Plaza Puerta del Sol, 12001.
             Castellón de la Plana
@@ -189,7 +202,7 @@
     introDiv.id = 'intro-animation';
     introDiv.innerHTML = `
       <div class="overlay">
-        <img src="Logo_Numa-removebg-preview.png" alt="Logo de Numa">
+        <img src="./media/Logo_Numa-removebg-preview.png" alt="Logo de Numa">
       </div>
     `;
     document.body.appendChild(introDiv);
@@ -254,8 +267,44 @@
         console.log("No se encontró el enlace con el selector correcto.");
     }
 });
-
 }
+
+const hamburger = document.getElementById('hamburger');
+  const menu = document.getElementById('menu');
+
+  hamburger.addEventListener('click', () => {
+    menu.classList.toggle('active');
+  });
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const bubble = document.getElementById("newsletterBubble");
+    const subscribeBtn = document.getElementById("subscribeBtn");
+    const closeBtn = document.getElementById("closeBubble");
+
+    // Si ya se ocultó en esta sesión, no mostrarla
+    if (sessionStorage.getItem("newsletterHidden") === "true") {
+      bubble.style.display = "none";
+    }
+
+    function hideBubble() {
+      bubble.classList.add("hide");
+      sessionStorage.setItem("newsletterHidden", "true");
+      setTimeout(() => {
+        bubble.style.display = "none";
+      }, 600);
+    }
+
+    subscribeBtn.addEventListener("click", function () {
+      hideBubble();
+      const footer = document.getElementById("footer");
+      if (footer) {
+        footer.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    closeBtn.addEventListener("click", hideBubble);
+  });
+</script>
 
   </script>
 </body>

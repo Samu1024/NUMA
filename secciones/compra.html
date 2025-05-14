@@ -18,7 +18,7 @@
             TLF:96498397
         </h2>
         <a href="../index.html">
-            <img class="logo" src="https://imgur.com/XOfzZEv.png" alt="Logo de la marca">
+            <img class="logo" src="../media/Logo_Numa-removebg-preview.png" alt="Logo de la marca">
             </a>
      <p>Elegancia y exclusividad en cada anillo</p>
     </header>
@@ -26,6 +26,7 @@
         <ul>
             <li><a href="../secciones/productos.html">Productos</a></li>
             <li><a href="../secciones/fidelidad.html">Fidelidad</a></li>
+            <li><a href="../secciones/contacto.html"><i class="fa-solid fa-phone"></i></a></li>
             <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <li><a href="../secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
         </ul>
@@ -90,6 +91,18 @@
             </div>
         </main>
     </div> 
+
+    <div id="cookie-overlay">
+  <div id="cookie-modal">
+    <p>
+      Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra 
+      <a href="../secciones/politica-cookies.html" target="_blank">Política de Cookies</a> y 
+      <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a>.
+    </p>
+    <input type="email" id="email-input" placeholder="Introduce tu email">
+    <button id="accept-cookies-btn">Aceptar</button>
+  </div>
+</div>
     <footer>
         <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
         <p>Plaza Puerta del Sol, 12001.
@@ -260,6 +273,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     renderCarrito();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+  const consentGiven = localStorage.getItem('cookiesAccepted');
+
+  // Mostrar solo si no es index.html y no se ha aceptado
+  if (!isIndex && !consentGiven) {
+    document.getElementById('cookie-overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Bloquear scroll
+  }
+
+  document.getElementById('accept-cookies-btn').addEventListener('click', () => {
+    const email = document.getElementById('email-input').value;
+
+    if (!email || !validateEmail(email)) {
+      alert("Por favor, introduce un email válido.");
+      return;
+    }
+
+    // Aquí puedes conectar con tu backend si quieres guardar el email
+    console.log("Email recogido:", email);
+
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookie-overlay').style.display = 'none';
+    document.body.style.overflow = ''; // Restaurar scroll
+  });
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
 });
 </script>
 

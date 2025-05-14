@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacto - Numa</title>
+  <link rel="stylesheet" href="../css/hojaestilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="layout">
+  <header>
+    <a href="../index.html">
+      <img class="logo" src="../media/Logo_Numa-removebg-preview.png" alt="Logo Numa">
+    </a>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="../secciones/productos.html">Productos</a></li>
+      <li><a href="../secciones/fidelidad.html">Fidelidad</a></li>
+      <li><a href="../secciones/contacto.html"><i class="fa-solid fa-phone"></i></a></li>
+      <li><a href="../secciones/compra.html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+      <li><a href="../secciones/deseos.html"><i class="fa-solid fa-star"></i></a></li>
+    </ul>
+  </nav>
+
+ <section id="contacto">
+  <div class="form-container">
+    <h2>Contáctanos</h2>
+    <form class="purchase-form" action="mailto:tuemail@ejemplo.com" method="POST" enctype="text/plain">
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="asunto">Asunto:</label>
+        <input type="text" id="asunto" name="asunto">
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" rows="5" style="width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px;"></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Enviar</button>
+    </form>
+  </div>
+</section>
+
+<div id="cookie-overlay">
+  <div id="cookie-modal">
+    <p>
+      Usamos cookies para mejorar tu experiencia. Al continuar, aceptas nuestra 
+      <a href="../secciones/politica-cookies.html" target="_blank">Política de Cookies</a> y 
+      <a href="/politica-privacidad.html" target="_blank">Política de Privacidad</a>.
+    </p>
+    <input type="email" id="email-input" placeholder="Introduce tu email">
+    <button id="accept-cookies-btn">Aceptar</button>
+  </div>
+</div>
+    <script src="../java/script.js"></script>
+ <footer>
+        <p>&copy; 2025 Numa Joyería. Todos los derechos reservados.</p>
+        <p>Plaza Puerta del Sol, 12001.
+            Castellón de la Plana
+            TLF: 96498397
+        </p>
+        <div class="footer-links">
+          <a href="privacy.html" class="footer-link">Política de Privacidad</a>
+          <a href="./secciones/politica-cookies.html" class="footer-link">Política de Cookies</a>
+          <a href="https://www.instagram.com/kenyatena_" target="_blank" class="footer-link">
+              <i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+    </footer>
+</body>
+</html>

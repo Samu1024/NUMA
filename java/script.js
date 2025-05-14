@@ -211,6 +211,40 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+ document.addEventListener('DOMContentLoaded', () => {
+  const isIndex = window.location.pathname.endsWith('index.html') || window.location.pathname === '/';
+  const consentGiven = localStorage.getItem('cookiesAccepted');
+
+  // Mostrar solo si no es index.html y no se ha aceptado
+  if (!isIndex && !consentGiven) {
+    document.getElementById('cookie-overlay').style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Bloquear scroll
+  }
+
+  document.getElementById('accept-cookies-btn').addEventListener('click', () => {
+    const email = document.getElementById('email-input').value;
+
+    if (!email || !validateEmail(email)) {
+      alert("Por favor, introduce un email válido.");
+      return;
+    }
+
+    // Aquí puedes conectar con tu backend si quieres guardar el email
+    console.log("Email recogido:", email);
+
+    localStorage.setItem('cookiesAccepted', 'true');
+    document.getElementById('cookie-overlay').style.display = 'none';
+    document.body.style.overflow = ''; // Restaurar scroll
+  });
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+});
+
+
+
+
 
 
 
