@@ -551,7 +551,7 @@
     }
 
     .parallax3 {
-    background-image: url('../Fondo.jpeg');
+    background-image: url('../media/Fondo.jpeg');
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -2055,6 +2055,56 @@
   cursor: pointer;
   color: #fff;
 }
+
+.newsletter-section {
+  text-align: center;
+  padding: 30px 20px;
+  background-color: #000000;
+  color: #fff;
+  border-top: 2px solid #f39c12;   /* Línea superior */
+  border-bottom: 2px solid #f39c12; /* Línea inferior */
+}
+
+.newsletter-section h3 {
+  margin-bottom: 15px;
+}
+
+.newsletter-section form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.newsletter-section input[type="email"] {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.newsletter-section button {
+  padding: 10px 20px;
+  background-color: #fff;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.newsletter-message {
+  margin-top: 15px;
+  color: #0f0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.newsletter-message.visible {
+  opacity: 1;
+}
+
 
 
     /* Estilos Responsivos */

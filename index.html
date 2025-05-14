@@ -174,7 +174,7 @@
 
 <div id="newsletterBubble" class="newsletter-bubble">
   <span class="close-bubble" id="closeBubble">&times;</span>
-  <p>¿Quieres estar al día? Suscríbete a nuestro Newsletter.</p>
+  <p>¿Quieres estar al día? Suscríbete a nuestro <em>Newsletter</em>.</p>
   <button id="subscribeBtn">Suscríbete</button>
 </div>
 
@@ -184,6 +184,14 @@
             Castellón de la Plana
             TLF: 96498397
         </p>
+        <div class="newsletter-section">
+        <h3>Suscríbete a nuestro Newsletter</h3>
+        <form id="newsletterForm">
+          <input type="email" id="newsletterEmail" placeholder="Tu correo electrónico" required>
+          <button type="submit">Suscribirse</button>
+        </form>
+        <div id="newsletterMessage" class="newsletter-message">¡Gracias por suscribirte!</div>
+      </div>
         <div class="footer-links">
           <a href="privacy.html" class="footer-link">Política de Privacidad</a>
           <a href="./secciones/politica-cookies.html" class="footer-link">Política de Cookies</a>
@@ -304,7 +312,30 @@ const hamburger = document.getElementById('hamburger');
 
     closeBtn.addEventListener("click", hideBubble);
   });
-</script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("newsletterForm");
+    const emailInput = document.getElementById("newsletterEmail");
+    const message = document.getElementById("newsletterMessage");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // Aquí podrías enviar el correo a un servidor si quisieras
+      // Ej: fetch('/api/newsletter', { method: 'POST', body: new FormData(form) })
+
+      // Mostrar mensaje de éxito
+      message.classList.add("visible");
+
+      // Limpiar el campo
+      emailInput.value = "";
+
+      // Ocultar mensaje después de 3 segundos
+      setTimeout(() => {
+        message.classList.remove("visible");
+      }, 3000);
+    });
+  });
 
   </script>
 </body>
