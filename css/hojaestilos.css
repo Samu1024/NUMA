@@ -2236,6 +2236,7 @@
         nav a:hover {
             color: #f39c12; /* Resalta el color en hover */
         }
+        
     }
 
     @media (max-width: 768px) {
@@ -2629,6 +2630,420 @@
                 padding: 0.7rem 1.5rem;
                 font-size: 1.2rem;
                 cursor: pointer;
+            }
+}
+
+ @media (max-width: 400px) {
+        body {
+            font-size: 1rem;
+        }
+
+        header {
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: block;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1rem; /* un poco de margen lateral */
+        }
+
+        .gallery-item {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden; /* evita que se salga contenido */
+            border-radius: 12px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-info {
+            padding: 1rem;
+        }
+
+        .quienes-somos-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .quienes-somos-photo {
+            max-width: 100%;
+        }
+
+        .form-container {
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        .submit-btn {
+            width: 100%;
+        }
+
+        .text-container1 {
+            padding: 290px 20px;
+        }
+
+        .text-container1 .subtitle span {
+            font-size: 1.8rem;
+        }
+
+        .line {
+        margin: 10px auto;
+        width: 80%;
+    }
+
+        .text-container1 h5,
+        .text-container1 .subtitle span {
+            font-size: 1.5rem;
+        }
+
+        .scroll-arrow {
+            margin-top: 20px;
+        }
+
+         .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2.5rem; /* Tamaño del ícono más grande */
+            color: black;      /* Color negro */
+            z-index: 1001;
+        }
+
+        .hamburger i {
+            background: none !important;
+            font-size: 2.5rem;  /* Aumenta el tamaño real del ícono */
+            color: black !important;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: #000; /* FONDO NEGRO */
+            padding: 10px 0;
+            gap: 0;
+            z-index: 2999;
+            }
+
+            .menu li {
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .menu li a {
+                color: #fff; /* ENLACES EN BLANCO */
+            }
+
+            .menu.active {
+                display: flex;
+            } 
+
+            .logo-link {
+                display: none;
+            }
+
+            .titulo-superior3 {
+                padding: 9rem 2rem; /* Menos padding para móviles */
+                border-radius: 8px;
+            }
+
+            .titulo-superior3 h1 {
+                font-size: 2rem; /* Más pequeño y manejable en móviles */
+                line-height: 1.2;
+                text-align: center;
+            }
+
+            .product-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .product-img {
+                width: 90%;        /* Más grande */
+                max-width: 350px;  /* Máximo más amplio */
+                margin-bottom: 1rem;
+            }
+
+            .product-info h3 {
+                font-size: 1.6rem; /* Más grande */
+            }
+
+            .product-info p {
+                font-size: 1.2rem; /* Más grande */
+            }
+
+            .product-info .price {
+                font-weight: 700;
+                font-size: 1.4rem; /* Más grande */
+                margin-top: 0.5rem;
+            }
+
+            .delete-button {
+                margin-top: 1rem;
+                padding: 0.7rem 1.5rem;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+}
+
+ @media (max-width: 350px) {
+        body {
+            font-size: 1rem;
+        }
+
+        header {
+            padding: 15px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        nav ul {
+            flex-direction: column;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: block;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 1rem; /* un poco de margen lateral */
+        }
+
+        .gallery-item {
+            width: 100%;
+            margin: 0 auto;
+            overflow: hidden; /* evita que se salga contenido */
+            border-radius: 12px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: 100%;
+        }
+
+        .gallery-info {
+            padding: 1rem;
+        }
+
+        .quienes-somos-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .quienes-somos-photo {
+            max-width: 100%;
+        }
+
+        .form-container {
+            padding: 20px;
+            max-width: 100%;
+        }
+
+        .submit-btn {
+            width: 100%;
+        }
+
+        .text-container1 {
+            padding: 290px 20px;
+        }
+
+        .text-container1 .subtitle span {
+            font-size: 1.8rem;
+        }
+
+        .line {
+        margin: 10px auto;
+        width: 80%;
+    }
+
+        .text-container1 h5,
+        .text-container1 .subtitle span {
+            font-size: 1.5rem;
+        }
+
+        .scroll-arrow {
+            margin-top: 20px;
+        }
+
+         .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 2.5rem; /* Tamaño del ícono más grande */
+            color: black;      /* Color negro */
+            z-index: 1001;
+        }
+
+        .hamburger i {
+            background: none !important;
+            font-size: 2.5rem;  /* Aumenta el tamaño real del ícono */
+            color: black !important;
+        }
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background-color: #000; /* FONDO NEGRO */
+            padding: 10px 0;
+            gap: 0;
+            z-index: 2999;
+            }
+
+            .menu li {
+                text-align: center;
+                padding: 15px 0;
+                border-bottom: 1px solid #333;
+            }
+
+            .menu li a {
+                color: #fff; /* ENLACES EN BLANCO */
+            }
+
+            .menu.active {
+                display: flex;
+            } 
+
+            .logo-link {
+                display: none;
+            }
+
+            .titulo-superior3 {
+                padding: 5rem 2rem; /* Menos padding para móviles */
+                border-radius: 8px;
+            }
+
+            .titulo-superior3 h1 {
+                font-size: 1.65rem; /* Más pequeño y manejable en móviles */
+                line-height: 1.2;
+                text-align: center;
+            }
+
+            .titulo-superior1 {
+                padding: 5rem 2rem; /* Menos padding para móviles */
+                border-radius: 8px;
+            }
+
+            .titulo-superior1 h1 {
+                font-size: 2rem; /* Más pequeño y manejable en móviles */
+                line-height: 1.2;
+                text-align: center;
+            }
+
+            .product-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .product-img {
+                width: 90%;        /* Más grande */
+                max-width: 350px;  /* Máximo más amplio */
+                margin-bottom: 1rem;
+            }
+
+            .product-info h3 {
+                font-size: 1.6rem; /* Más grande */
+            }
+
+            .product-info p {
+                font-size: 1.2rem; /* Más grande */
+            }
+
+            .product-info .price {
+                font-weight: 700;
+                font-size: 1.4rem; /* Más grande */
+                margin-top: 0.5rem;
+            }
+
+            .delete-button {
+                margin-top: 1rem;
+                padding: 0.7rem 1.5rem;
+                font-size: 1.2rem;
+                cursor: pointer;
+            }
+
+            .productos-premium {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+                padding: 0 1rem;
+        }
+    
+            .producto-premium {
+                width: 250px;
+                background: #f6f6f6;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            
+            .producto-premium:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            }
+            
+            .producto-premium img {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+                border-radius: 10px;
+                }
+
+            
+            .producto-premium .info {
+                padding: 1.5rem;
+            }
+            
+            .producto-premium h3 {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+                color:#000
+            }
+            
+            .producto-premium .precio {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                font-weight: bold;
             }
 }
 
