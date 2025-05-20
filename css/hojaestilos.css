@@ -2960,7 +2960,6 @@
         }
 }
 
-
  @media (max-width: 400px) {
         body {
             font-size: 1rem;
@@ -3760,7 +3759,7 @@
 }
 
 
- @media (max-width: 350px) {
+ @media (min-width: 250px) and (max-width: 390px) {
         body {
             font-size: 1rem;
         }
@@ -4168,6 +4167,104 @@
         cursor: pointer;
         transition: transform 0.3s ease;
         }
+
+        /* Página general */
+.wishlist-page {
+  display: flex;
+  justify-content: center;
+  padding: 60px 20px;
+  background-color: #fafafa;
+}
+
+/* Contenedor principal */
+.wishlist-container {
+  background: #fff;
+  padding: 50px;
+  border-radius: 25px;
+  width: 150%;
+  max-width: 1000px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+.wishlist-title {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #7B002C;
+}
+
+/* Lista de productos */
+.wishlist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Producto individual */
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background-color: #fdfdfd;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.wishlist-item:hover {
+  transform: scale(1.02);
+}
+
+/* Imagen */
+.wishlist-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Info */
+.wishlist-info {
+  flex: 1;
+}
+
+.wishlist-info h3 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.wishlist-info p {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.wishlist-info .wishlist-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #b12704;
+}
+
+/* Botón eliminar */
+.wishlist-delete-button {
+  background-color: #7B002C;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 10px;
+}
+
+.wishlist-delete-button:hover {
+  background-color: #5a001f;
+}
 }
 
     .certified {
